@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars and Category</title>
+</head>
+<body>
+<div class="container">
+    <h1>Cars and their Category</h1>
+    <a href="/addcar">Add a Car</a>
+
+    <div th:each="eachOwner:${people}"> <!--category obj-->
+        <h2 th:text="${eachOwner.categoryName}"></h2>
+
+        <h3 th:text="${#lists.size(eachOwner.cars)>0}?'My Cars':'No cars for me'"></h3>
+        <div th:each="eachCar:${eachOwner.cars}">
+            <p th:text="${eachCar.carName}"
+               th:value="${eachCar.id}"></p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

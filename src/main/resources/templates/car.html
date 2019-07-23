@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Form</title>
+</head>
+<body>
+<form th:action="@{/processcar}" th:object="${car}" method="post">
+    <div class="container">
+        <input th:field="*{id}" type="hidden">
+        <input th:field="*{carName}" type="text">
+
+        <select th:field="*{category}" multiple>
+            <option th:each ="eachOwner:${people}"
+                    th:text="${eachOwner.categoryName}"
+                    th:value="${eachOwner.id}">
+            </option>
+        </select>
+    </div>
+
+    <button type="submit">Save Car</button>
+</form>
+</body>
+</html>

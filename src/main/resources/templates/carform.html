@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="#"
+      th:action="@{/process}"
+      th:object="${car}"
+      method="post">
+
+    <input type="hidden" th:field="*{id}" />
+    Title :<input type="text" th:field="*{carName}" />
+    <span th:if="${#fields.hasErrors('carName')}"
+          th:errors="*{carName}"></span><br />
+    <input type="submit" value="Submit" />
+
+</form>
+</body>
+</html>

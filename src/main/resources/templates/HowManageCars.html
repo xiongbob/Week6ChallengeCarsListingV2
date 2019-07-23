@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:fragment="header">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <title>HowToDoMessage</title>
+        <!--Bootstrap CSS-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+              crossorigin="anonymous">
+        <!--My CSS-->
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <!--Google Fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Belgrano|Flamenco&display=swap" rel="stylesheet">
+    </div>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+        body {
+            background: azure;
+
+            /*<!--
+            background: url(https://res.cloudinary.com/dvbavvpr8/image/upload/c_crop,g_faces,h_1926,q_97,w_2889/v1558553606/samples/people/bicycle.jpg) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            -->*/
+        }
+
+        th {
+            text-align: left;
+        }
+        .container{
+            width: 80%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div th:fragment="navbar">
+        <ul class="nav">
+            <li class="nav-item" id="firstItem">
+                <a class="nav-link active" href="https://www.w3schools.com/html/">HTML</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://www.w3schools.com/css/">CSS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://www.w3schools.com/java/">Java</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://www.w3schools.com/bootstrap/">BootStrap</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://www.w3schools.com/">Others</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Navigation bar-->
+    <div th:insert="base :: navbar"></div>
+
+    <div class="jumbotron">
+        <h1 class="display-4">How to Create a Message Application</h1>
+        <!--<h2>Skills needed as the following:</h2>-->
+        <p class="lead">Skills needed as the following to do this application: </p>
+        <hr class="my-4">
+        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    </div>
+
+    <h6><a href="https://www.w3schools.com/html/">HTML</a></h6>
+    <h6><a href="https://www.w3schools.com/css/">CSS</a></h6>
+    <h6><a href="https://www.w3schools.com/java/">Java</a></h6>
+    <h6><a href="https://www.w3schools.com/bootstrap/">BootStrap</a></h6>
+    <h6><a href="https://www.w3schools.com/">Other related skills</a></h6>
+    <br/>
+
+    <br/>
+    <p>Here are the steps</p>
+    <ul>
+        <li>Create your project</li>
+        <li>Write your HomeController.java</li>
+        <li>Create the html web page</li>
+        <li>Run your application</li>
+        <li>Test it in the browse</li>
+    </ul>
+
+    <!--<h2><p><a href="">Please provide <b>your feedback</b> to us.</a></p></h2>-->
+    <h2><p><a href="">Here is a <b>example</b> for you.</a></p></h2>
+    <!--
+        <br/>
+        <form action="#">
+            Name: <input type="text"><br>
+            Feedback: <textarea cols="54" rows="5"></textarea><br>
+
+            <input type="submit"></input>
+            <button type="button">Cancel</button>
+        </form>
+        <br/>
+        <br/>
+    -->
+    <form action="#"
+          th:action="@{/process}"
+          th:object="${car}"
+          method="post">
+
+        <input type="hidden" th:field="*{id}" />
+        Name :<input type="text" th:field="*{carName}" />
+        <span th:if="${#fields.hasErrors('carName')}"
+              th:errors="*{carName}"></span><br />
+        <input type="submit" value="Submit" />
+    </form>
+
+    <p><b>Our team: </b></p>
+    <!--<table class="table table-striped table-dark table-bordered">-->
+    <!--<table class="table table-hover">-->
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>email</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+
+</body>
+</html>
